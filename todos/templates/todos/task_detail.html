@@ -1,0 +1,38 @@
+{% extends 'todos/base.html' %}
+
+{% block title %}{{ task.title }} - {{ block.super }}{% endblock %}
+
+{% block page_title %}Task Details{% endblock %}
+
+{% block content %}
+<div class="task-detail">
+    <div class="detail-group">
+        <label>Title:</label>
+        <div class="detail-value">{{ task.title }}</div>
+    </div>
+    
+    <div class="detail-group">
+        <label>Description:</label>
+        <div class="detail-value">{{ task.description|default:"No description" }}</div>
+    </div>
+    
+    <div class="detail-group">
+        <label>Status:</label>
+        <div class="detail-value">{{ task.is_complete|yesno:"Complete,Incomplete" }}</div>
+    </div>
+    
+    <div class="detail-group">
+        <label>Created:</label>
+        <div class="detail-value">{{ task.created_at|date:"M d, Y g:i A" }}</div>
+    </div>
+    
+    <div class="detail-group">
+        <label>Last Updated:</label>
+        <div class="detail-value">{{ task.updated_at|date:"M d, Y g:i A" }}</div>
+    </div>
+</div>
+
+<div class="detail-actions">
+    <a href="{% url 'task_list' %}">Back to Task List</a>
+</div>
+{% endblock %}

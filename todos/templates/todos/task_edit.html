@@ -1,0 +1,41 @@
+{% extends 'todos/base.html' %}
+
+{% block title %}Edit Task - {{ block.super }}{% endblock %}
+
+{% block page_title %}Edit Task{% endblock %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ title|default:task.title }}" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description">{{ description|default:task.description }}</textarea>
+    </div>
+    
+    <div class="checkbox-group">
+        <label for="is_complete">
+            <input type="checkbox" id="is_complete" name="is_complete" 
+                   {% if is_complete|default:task.is_complete %}checked{% endif %}>
+            Mark as complete
+        </label>
+    </div>
+    
+    <div class="form-actions">
+        <button type="submit">Save Changes</button>
+        <a href="{% url 'task_list' %}">Cancel</a>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+<!-- todos/templates/todos/task_create.html -->
+{% extends 'todos/base.html' %}
+
+{% block title %}Create New Task - {{ block.super }}{% endblock %}
+
+{% block page_title %}Create New Task{% endblock %}
+
+{% block content %}
+<!-- Remove the <h2>Create New Task</h2> since it's now in the header -->
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ title|default:'' }}" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description">{{ description|default:'' }}</textarea>
+    </div>
+    
+    <div class="form-actions">
+        <button type="submit">Create Task</button>
+        <a href="{% url 'task_list' %}">Cancel</a>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,203 @@
+/* Form container */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+    display: block;
+}
+
+/* Form actions */
+.form-actions button,
+.form-actions a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #000;
+    text-decoration: none;
+    background-color: #f0f0f0;
+    color: #333;
+    min-width: 80px;
+    text-align: center;
+    box-sizing: border-box;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.form-actions button {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.form-actions button:hover,
+.form-actions a:hover {
+    background-color: #d0d0d0;
+}
+
+/* Update in todos/static/todos/css/style.css */
+
+/* Search form styles */
+.search-form {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.search-form form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    border: none;           /* Remove gray border */
+    padding: 0;             /* Remove padding */
+    margin: 0;              /* Remove margin */
+    background: none;       /* Remove background */
+    max-width: none;        /* Remove width constraint */
+}
+
+.search-form label {
+    font-weight: bold;
+}
+
+.search-form input[type="text"] {
+    padding: 8px;
+    border: 1px solid #000;
+    min-width: 250px;
+}
+.search-form button,
+.search-form a {
+    padding: 8px 15px;
+    border: 1px solid #000;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    min-width: 80px;
+    text-align: center;
+    box-sizing: border-box;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 1.2;
+    display: inline-block;
+}
+
+.search-form button:hover,
+.search-form a:hover {
+    background-color: #e0e0e0;
+}
+
+.delete-button {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    border-color: #721c24 !important;
+    min-width: 80px;
+}
+
+.delete-button:hover {
+    background-color: #f1b0b7 !important;
+}
+
+/* Toggle button styling */
+/* Add/update in todos/static/todos/css/forms.css */
+
+/* Inline form for toggle button */
+td form {
+    display: inline !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    max-width: none !important;
+}
+
+/* Toggle button styling */
+.toggle-button {
+    background-color: #e8f4fd !important;
+    color: #0c5460 !important;
+    border: 1px solid #0c5460 !important;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    vertical-align: baseline; /* Align with text links */
+}
+
+.toggle-button:hover {
+    background-color: #d1ecf1 !important;
+}
+
+.inline-form {
+    display: inline;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    max-width: none;
+}
+
+/* Messages */
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #000;
+    animation: fadeOut 2s ease-in-out forwards;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    75% { opacity: 1; }     /* Stay visible for 1 second */
+    100% { opacity: 0; visibility: hidden; }  /* Fade out in the last second */
+}

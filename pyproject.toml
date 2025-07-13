@@ -1,0 +1,27 @@
+[project]
+name = "todo-web-1-django"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "guilhermegouw",email = "guilherme.gouw@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django (>=5.2.4,<6.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest-django = "^4.11.1"
+model-bakery = "^1.20.5"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "core.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+addopts = "-v --tb=short --reuse-db"
+testpaths = ["todos/tests"]

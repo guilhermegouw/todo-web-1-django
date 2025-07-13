@@ -1,0 +1,71 @@
+{% extends 'todos/base.html' %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+<!-- Search form -->
+<div class="search-form">
+    <form method="get">
+        <label for="search">Search tasks:</label>
+        <input type="text" id="search" name="search" value="{{ search_query }}" placeholder="Search by title or description...">
+        <button type="submit">Search</button>
+        {% if search_query %}
+            <a href="{% url 'task_list' %}">Clear</a>
+        {% endif %}
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.is_complete|yesno:"Complete,Incomplete" }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description|default:"No description" }}</td>
+            <td>{{ task.created_at|date:"M d, Y" }}</td>
+            <td>
+                <a href="{% url 'task_edit' task.pk %}">Edit</a> |
+                <a href="{% url 'task_detail' task.pk %}">View</a> |
+                <a href="{% url 'task_delete' task.pk %}">Delete</a> |
+                <form method="post" action="{% url 'task_toggle' task.pk %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="toggle-button">
+                        {% if task.is_complete %}
+                            Mark Incomplete
+                        {% else %}
+                            Mark Complete
+                        {% endif %}
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">
+                {% if search_query %}
+                    No tasks found matching "{{ search_query }}".
+                {% else %}
+                    No tasks available.
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="actions">
+    <a href="{% url 'task_create' %}">Create New Task</a>
+</div>
+{% endblock %}
